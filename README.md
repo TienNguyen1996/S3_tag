@@ -67,15 +67,17 @@ Create `~/.aws/config`:
 ## CSV format
 
 ### Tagging (tag)
+```
 Each row contains an S3 object path and tags:
     s3://my-bucket/data/file1.csv,Key1=Value1;Key2=Value2
     s3://another-bucket/images/photo.png,env=prod;owner=team-a
-
+```
 ### Cleaning (clean)
+```
 Each row contains only the S3 object path:
     s3://my-bucket/data/file1.csv
     s3://my-bucket/data/file2.csv
-
+```
 ---
 
 ## Usage
