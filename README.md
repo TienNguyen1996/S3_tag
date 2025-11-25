@@ -82,13 +82,19 @@ Each row contains only the S3 object path:
 
 ## Usage
 Windows PowerShell:
+```
     python .\src\main.py tag .\sample\objects.csv
+```
+```
     python .\src\main.py clean .\sample\objects.csv
-
+```
 Linux/macOS (bash/zsh):
+```
     python ./src/main.py tag ./sample/objects.csv
+```
+```
     python ./src/main.py clean ./sample/objects.csv
-
+```
 ---
 
 ## Permissions
