@@ -1,34 +1,30 @@
-import argparse
+# main.py
 import sys
+from cli import build_parser
+from auth import validate_credentials
 from tagger import apply_tags_from_csv
 from cleaner import clean_tags_from_csv
+import notify
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Tag or clean S3 object tags from a CSV file"
-    )
-    subparsers = parser.add_subparsers(dest="command", required=True)
-
-    # Tag command
-    tag_parser = subparsers.add_parser("tag", help="Apply tags to S3 objects")
-    tag_parser.add_argument("csv_file", help="Path to CSV file with object paths and tags")
-
-    # Clean command
-    clean_parser = subparsers.add_parser("clean", help="Remove tags from S3 objects")
-    clean_parser.add_argument("csv_file", help="Path to CSV file with object paths")
-
+    parser = build_parser()
     args = parser.parse_args()
 
+    # Step 1: validate credentials
+    if not validate_credentials():
+        notify.err("Credential validation failed.")
+        sys.exit(1)
+    notify.ok("Credential validation passed.")
+
+    # Step 2: run the chosen action
     if args.command == "tag":
-        print(f"Applying tags from {args.csv_file}...")
+        notify.ok(f"Starting tagging from {args.csv_file}...")
         apply_tags_from_csv(args.csv_file)
-        print("✅ Tagging completed.")
-
+        notify.ok("Tagging completed.")
     elif args.command == "clean":
-        print(f"Cleaning tags from {args.csv_file}...")
+        notify.ok(f"Starting cleaning from {args.csv_file}...")
         clean_tags_from_csv(args.csv_file)
-        print("✅ Cleaning completed.")
-
+        notify.ok("Cleaning completed.")
     else:
         parser.print_help()
         sys.exit(1)
