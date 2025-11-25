@@ -1,4 +1,4 @@
-# S3 Tagging Tool
+V# S3 Tagging Tool
 
 A simple Python command‑line utility to apply or remove tags from Amazon S3 objects in bulk using CSV files.
 
@@ -26,6 +26,7 @@ Install:
 You can provide AWS credentials in one of three ways:
 
 ### 1. Environment variables
+```
 Linux/macOS (bash/zsh):
     export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY"
     export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_KEY"
@@ -35,8 +36,10 @@ Windows PowerShell:
     $env:AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY"
     $env:AWS_SECRET_ACCESS_KEY="YOUR_SECRET_KEY"
     $env:AWS_DEFAULT_REGION="us-east-1"
+```
 
 ### 2. AWS profiles (credentials and config files)
+```
 Create `~/.aws/credentials`:
     [default]
     aws_access_key_id = YOUR_ACCESS_KEY
@@ -54,7 +57,7 @@ Create `~/.aws/config`:
     [profile my-profile]
     region = ap-southeast-1
     output = json
-
+```
 ### 3. Custom credentials file path (optional)
     export AWS_SHARED_CREDENTIALS_FILE="/custom/path/credentials"
     export AWS_CONFIG_FILE="/custom/path/config"
