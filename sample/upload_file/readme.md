@@ -1,0 +1,1 @@
+Upload these 2 files to root of your bucket

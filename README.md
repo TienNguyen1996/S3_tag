@@ -76,15 +76,13 @@ Each row contains only the S3 object path:
 ---
 
 ## Usage
-Apply tags:
-    python script.py tag objects_with_tags.csv
+Windows PowerShell:
+    python .\src\main.py tag .\sample\objects.csv
+    python .\src\main.py clean .\sample\objects.csv
 
-Remove tags:
-    python script.py clean objects_to_clean.csv
-
-Use a specific AWS profile (if supported):
-    python script.py tag objects_with_tags.csv --profile my-profile
-    python script.py clean objects_to_clean.csv --profile my-profile
+Linux/macOS (bash/zsh):
+    python ./src/main.py tag ./sample/objects.csv
+    python ./src/main.py clean ./sample/objects.csv
 
 ---
 
@@ -94,9 +92,16 @@ Use a specific AWS profile (if supported):
 
 ---
 
-## Project structure
-    .
-    ├── script.py        # CLI entry point (argparse: tag/clean subcommands)
-    ├── tagger.py        # apply_tags_from_csv(csv_path)
-    ├── cleaner.py       # clean_tags_from_csv(csv_path)
-    └── README.md
+# 📂 Project Folder Structure
+
+```text
+S3_tag/
+├── sample/              # Sample data and example CSV/files
+├── scripts/             # Utility scripts
+├── src/                 # Source code
+├── tests/               # Unit and integration tests
+├── .gitignore           # Git ignore rules
+├── config.yaml          # Project configuration
+├── README.md            # Project documentation
+└── requirements.txt     # Python dependencies
+
